@@ -11,9 +11,9 @@ public class Program {
 
 //        Parser tester = new Parser();
 //        int[][] g = {{0, 1, 2, 0},
-//                    {1, 0, 5, 3},
-//                    {2, 5, 0, 4},
-//                    {0, 3, 4, 0}};
+//                    {0, 0, 5, 3},
+//                    {0, 5, 0, 4},
+//                    {0, 0, 0, 0}};
 //        System.out.println(tester.modifiedDijkstra(g));
 
         Scanner sc = new Scanner(System.in);
@@ -39,6 +39,9 @@ public class Program {
             locations[i] = sc.next();
             allStops[i+1] = locations[i];
         }
+
+        Parser tester = new Parser();
+        tester.getOrder(allStops);
 
 //        System.out.println(getOrder());
         sc.close();

@@ -133,6 +133,9 @@ public class Parser {
                         q.add(new Pair<>(i, seenNodesClone));
                         distances.put(new Pair<>(i, seenNodesClone), distances.get(new Pair<>(currentNode, seenNodes)) + g[currentNode][i]);
                         ArrayList currPath = paths.get(new Pair<>(currentNode, seenNodes));
+                        if(currPath.contains(i)) {
+                            currPath.remove(Integer.valueOf(i));
+                        }
                         currPath.add(i);
                         paths.put(new Pair<>(i, seenNodesClone), currPath);
                     }
@@ -144,10 +147,11 @@ public class Parser {
         return paths.get(new Pair<Integer, BitSet>(g.length-1, everyVisited));
     }
 
-    public String getOrder() {
-//        for (int i = 0; i < locations.length; i++) {
-//
-//        }
-        return "";
+    public void getOrder(String[] stops) {
+        int[][] g = createGraph(stops.length, stops);
+        ArrayList<Integer> indices = modifiedDijkstra(g);
+        for (int i = 0; i < indices.size(); i++) {
+            System.out.println(stops[indices.get(i)]);
+        }
     }
 }
